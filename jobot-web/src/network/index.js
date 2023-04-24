@@ -51,8 +51,6 @@ export async function getTemplate(slug) {
 }
 
 export async function fetchUserProfile(supabase, user) {
-  console.log("fetch user Profile user");
-  console.log(user);
   try {
     const { data, error } = await supabase
       .from("profiles")
