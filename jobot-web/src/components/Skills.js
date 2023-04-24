@@ -9,11 +9,11 @@ async function getSkills(supabase) {
   try {
     const { data, error } = await supabase.from("skills").select(`
         *,
-        profiles (
-          username,
-          first_name,
-          last_name
-        )
+        // profiles (
+        //   username,
+        //   first_name,
+        //   last_name
+        // )
       `);
     if (error) {
       throw error;
