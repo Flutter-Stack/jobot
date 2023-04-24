@@ -32,8 +32,12 @@ async function updateUserProfile(supabase, profileData) {
 export default function AccountPage() {
   const router = useRouter();
   const user = useUser();
+  console.log("Authenticated user");
+  console.log(user);
   const supabase = useSupabaseClient();
   const [profileData, setProfileData] = useState({});
+  console.log("User logs");
+  console.log(user);
 
   useEffect(() => {
     fetchUserProfile(supabase, user).then((data) => setProfileData(data));
