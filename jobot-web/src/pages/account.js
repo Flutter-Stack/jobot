@@ -32,6 +32,8 @@ async function updateUserProfile(supabase, profileData) {
 async function createUserProfile(supabase, profileData, userId) {
   try {
     profileData.id = userId;
+    console.log("profile data before create");
+    console.log(profileData);
     const { error } = await supabase
       .from("profiles")
       .insert(profileData);
