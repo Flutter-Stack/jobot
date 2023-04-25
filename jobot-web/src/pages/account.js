@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 // import TextArea from "@/components/inputs/TextArea";
 // import TextInput from "@/components/inputs/TextInput";
 // import { fetchUserProfile } from "@/network";
-// import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import Head from "next/head";
 import Link from "next/link";
 // import { useRouter } from "next/router";
