@@ -29,6 +29,25 @@ async function updateUserProfile(supabase, profileData) {
   }
 }
 
+async function createUserProfile(supabase, profileData, userId) {
+  try {
+    profileData.id = userId;
+    const { error } = await supabase
+      .from("profiles")
+      .create(profileData);
+
+    if (error) {
+      throw error;
+    }
+
+    toast.success("Profile created!");
+    return true;
+  } catch (e) {
+    toast.error("Failed to create profile");
+    console.error("Failed to create profile", e);
+  }
+}
+
 export default function AccountPage() {
   const router = useRouter();
   const user = useUser();
@@ -48,8 +67,7 @@ export default function AccountPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    updateUserProfile(supabase, profileData);
+    profileData.id === undefined ? createUserProfile(supabase, profileData, user.id) : updateUserProfile(supabase, profileData);
   }
 
 //  console.log("profile Data");
