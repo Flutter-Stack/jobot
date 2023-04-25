@@ -52,9 +52,9 @@ export default function AccountPage() {
   }
 console.log("profile Data");
  console.log(profileData);
-  if (!profileData) {
-    return null;
-  }
+  // if (!profileData) {
+  //   return null;
+  // }
 
   return (
     <>
