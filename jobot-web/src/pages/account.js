@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
-// import SlugInput from "@/components/inputs/SlugInput";
-// import TextArea from "@/components/inputs/TextArea";
-// import TextInput from "@/components/inputs/TextInput";
+import SlugInput from "@/components/inputs/SlugInput";
+import TextArea from "@/components/inputs/TextArea";
+import TextInput from "@/components/inputs/TextInput";
 import { fetchUserProfile } from "@/network";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import Head from "next/head";
@@ -54,9 +54,9 @@ export default function AccountPage() {
 
  console.log("profile Data");
  console.log(profileData);
-  if (!profileData) {
-    return null;
-  }
+  // if (!profileData) {
+  //   return null;
+  // }
 
   return (
     <>
@@ -72,7 +72,7 @@ export default function AccountPage() {
               Manage Account
             </h1>
             <form>
-              {/* <SlugInput
+              <SlugInput
                 field="username"
                 label="Username"
                 required
@@ -99,8 +99,7 @@ export default function AccountPage() {
                 label="Bio"
                 value={profileData.bio}
                 onChange={makeOnChange("bio")}
-              /> */}
-<div>adfasfafd</div>
+              />
               <div className="mt-4 flex justify-between">
                 <input
                   type="submit"
