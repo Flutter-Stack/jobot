@@ -34,7 +34,7 @@ async function createUserProfile(supabase, profileData, userId) {
     profileData.id = userId;
     const { error } = await supabase
       .from("profiles")
-      .create(profileData);
+      .insert(profileData);
 
     if (error) {
       throw error;
