@@ -30,13 +30,13 @@ async function updateUserProfile(supabase, profileData) {
 }
 
 export default function AccountPage() {
-  const router = useRouter();
-  const user = useUser();
-  const supabase = useSupabaseClient();
+  // const router = useRouter();
+  // const user = useUser();
+  // const supabase = useSupabaseClient();
   // const [profileData, setProfileData] = useState({});
 
-  console.log("Account page user");
-  console.log(user);
+  // console.log("Account page user");
+  // console.log(user);
 
   // useEffect(() => {
   //   fetchUserProfile(supabase, user).then((data) => setProfileData(data));
@@ -51,8 +51,8 @@ export default function AccountPage() {
     updateUserProfile(supabase, profileData);
   }
 
-console.log("profile Data");
- console.log(profileData);
+// console.log("profile Data");
+//  console.log(profileData);
   // if (!profileData) {
   //   return null;
   // }
@@ -71,50 +71,7 @@ console.log("profile Data");
               Manage Account
             </h1>
             <form>
-              <SlugInput
-                field="username"
-                label="Username"
-                required
-                // value={profileData.username}
-                // onChange={makeOnChange("username")}
-              />
-              <TextInput
-                field="first_name"
-                label="First Name"
-                required
-                // value={profileData.first_name}
-                // onChange={makeOnChange("first_name")}
-              />
-
-              <TextInput
-                field="last_name"
-                label="Last Name"
-                // value={profileData.last_name}
-                // onChange={makeOnChange("last_name")}
-              />
-
-              <TextArea
-                field="bio"
-                label="Bio"
-                // value={profileData.bio}
-                // onChange={makeOnChange("bio")}
-              />
-
-              <div className="mt-4 flex justify-between">
-                <input
-                  type="submit"
-                  value="Save"
-                  onClick={handleSubmit}
-                  className="rounded-md w-20  bg-blue-500 py-2 px-3 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-600 active:bg-blue-700 dark:ring-0"
-                />
-                <Link
-                  href="/logout"
-                  type="submit"
-                  className="ml-3 rounded-md bg-white py-2 px-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 active:bg-gray-100"
-                >
-                  Log Out
-                </Link>
-              </div>
+              <p>Hello Hi</p>
             </form>
           </div>
         </div>
