@@ -74,28 +74,28 @@ console.log("profile Data");
                 field="username"
                 label="Username"
                 required
-                value={profileData.username}
+                // value={profileData.username}
                 onChange={makeOnChange("username")}
               />
               <TextInput
                 field="first_name"
                 label="First Name"
                 required
-                value={profileData.first_name}
+                // value={profileData.first_name}
                 onChange={makeOnChange("first_name")}
               />
 
               <TextInput
                 field="last_name"
                 label="Last Name"
-                value={profileData.last_name}
+                // value={profileData.last_name}
                 onChange={makeOnChange("last_name")}
               />
 
               <TextArea
                 field="bio"
                 label="Bio"
-                value={profileData.bio}
+                // value={profileData.bio}
                 onChange={makeOnChange("bio")}
               />
 
