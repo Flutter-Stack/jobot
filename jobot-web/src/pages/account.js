@@ -33,23 +33,24 @@ export default function AccountPage() {
   const router = useRouter();
   const user = useUser();
   const supabase = useSupabaseClient();
-  const [profileData, setProfileData] = useState({});
+  // const [profileData, setProfileData] = useState({});
 
   console.log("Account page user");
   console.log(user);
 
-  useEffect(() => {
-    fetchUserProfile(supabase, user).then((data) => setProfileData(data));
-  }, [supabase, user, setProfileData, router]);
+  // useEffect(() => {
+  //   fetchUserProfile(supabase, user).then((data) => setProfileData(data));
+  // }, [supabase, user, setProfileData, router]);
 
-  const makeOnChange = (field) => (e) =>
-    setProfileData({ ...profileData, [field]: e.target.value });
+  // const makeOnChange = (field) => (e) =>
+  //   setProfileData({ ...profileData, [field]: e.target.value });
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     updateUserProfile(supabase, profileData);
   }
+
 console.log("profile Data");
  console.log(profileData);
   // if (!profileData) {
@@ -75,28 +76,28 @@ console.log("profile Data");
                 label="Username"
                 required
                 // value={profileData.username}
-                onChange={makeOnChange("username")}
+                // onChange={makeOnChange("username")}
               />
               <TextInput
                 field="first_name"
                 label="First Name"
                 required
                 // value={profileData.first_name}
-                onChange={makeOnChange("first_name")}
+                // onChange={makeOnChange("first_name")}
               />
 
               <TextInput
                 field="last_name"
                 label="Last Name"
                 // value={profileData.last_name}
-                onChange={makeOnChange("last_name")}
+                // onChange={makeOnChange("last_name")}
               />
 
               <TextArea
                 field="bio"
                 label="Bio"
                 // value={profileData.bio}
-                onChange={makeOnChange("bio")}
+                // onChange={makeOnChange("bio")}
               />
 
               <div className="mt-4 flex justify-between">
