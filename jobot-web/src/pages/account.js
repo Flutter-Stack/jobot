@@ -76,7 +76,7 @@ export default function AccountPage() {
                 field="username"
                 label="Username"
                 required
-                // value={profileData?.username}
+                value={profileData?.username}
                 onChange={makeOnChange("username")}
               />
               <TextInput
