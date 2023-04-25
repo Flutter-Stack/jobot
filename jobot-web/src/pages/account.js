@@ -32,7 +32,8 @@ import Link from "next/link";
 export default function AccountPage() {
   // const router = useRouter();
   const user = useUser();
-  const supabase = useSupabaseClient();
+  
+  useSupabaseClient();
 
   // const [profileData, setProfileData] = useState({});
 
