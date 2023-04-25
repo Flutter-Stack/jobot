@@ -1,46 +1,60 @@
 import Navbar from "@/components/Navbar";
+import SlugInput from "@/components/inputs/SlugInput";
+import TextArea from "@/components/inputs/TextArea";
+import TextInput from "@/components/inputs/TextInput";
+import { fetchUserProfile } from "@/network";
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 
-// async function updateUserProfile(supabase, profileData) {
-//   try {
-//     const { error } = await supabase
-//       .from("profiles")
-//       .update(profileData)
-//       .eq("id", profileData.id);
+async function updateUserProfile(supabase, profileData) {
+  try {
+    const { error } = await supabase
+      .from("profiles")
+      .update(profileData)
+      .eq("id", profileData.id);
 
-//     if (error) {
-//       throw error;
-//     }
+    if (error) {
+      throw error;
+    }
 
-//     toast.success("Profile updated!");
-//     return true;
-//   } catch (e) {
-//     toast.error("Failed to update profile");
-//     console.error("Failed to update profile", e);
-//   }
-// }
+    toast.success("Profile updated!");
+    return true;
+  } catch (e) {
+    toast.error("Failed to update profile");
+    console.error("Failed to update profile", e);
+  }
+}
 
 export default function AccountPage() {
-  // const router = useRouter();
-  // const user = useUser();
-  // const supabase = useSupabaseClient();
-  // const [profileData, setProfileData] = useState({});
+  const router = useRouter();
+  const user = useUser();
+  const supabase = useSupabaseClient();
+  const [profileData, setProfileData] = useState({});
 
-  // console.log("Account page user");
-  // console.log(user);
+  console.log("Account page user");
+  console.log(user);
 
-  // useEffect(() => {
-  //   fetchUserProfile(supabase, user).then((data) => setProfileData(data));
-  // }, [supabase, user, setProfileData, router]);
+  useEffect(() => {
+    fetchUserProfile(supabase, user).then((data) => setProfileData(data));
+  }, [supabase, user, setProfileData, router]);
 
-  // const makeOnChange = (field) => (e) =>
-  //   setProfileData({ ...profileData, [field]: e.target.value });
+  const makeOnChange = (field) => (e) =>
+    setProfileData({ ...profileData, [field]: e.target.value });
 
-// console.log("profile Data");
-//  console.log(profileData);
-  // if (!profileData) {
-  //   return null;
-  // }
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    updateUserProfile(supabase, profileData);
+  }
+console.log("profile Data");
+ console.log(profileData);
+  if (!profileData) {
+    return null;
+  }
 
   return (
     <>
@@ -56,7 +70,50 @@ export default function AccountPage() {
               Manage Account
             </h1>
             <form>
-              <p>Hello Hi</p>
+              {/* <SlugInput
+                field="username"
+                label="Username"
+                required
+                value={profileData.username}
+                onChange={makeOnChange("username")}
+              />
+              <TextInput
+                field="first_name"
+                label="First Name"
+                required
+                value={profileData.first_name}
+                onChange={makeOnChange("first_name")}
+              />
+
+              <TextInput
+                field="last_name"
+                label="Last Name"
+                value={profileData.last_name}
+                onChange={makeOnChange("last_name")}
+              />
+
+              <TextArea
+                field="bio"
+                label="Bio"
+                value={profileData.bio}
+                onChange={makeOnChange("bio")}
+              /> */}
+<div>adfasfafd</div>
+              <div className="mt-4 flex justify-between">
+                <input
+                  type="submit"
+                  value="Save"
+                  onClick={handleSubmit}
+                  className="rounded-md w-20  bg-blue-500 py-2 px-3 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-600 active:bg-blue-700 dark:ring-0"
+                />
+                <Link
+                  href="/logout"
+                  type="submit"
+                  className="ml-3 rounded-md bg-white py-2 px-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 active:bg-gray-100"
+                >
+                  Log Out
+                </Link>
+              </div>
             </form>
           </div>
         </div>
