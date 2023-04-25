@@ -10,24 +10,24 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 // import { toast } from "react-hot-toast";
 
-// async function updateUserProfile(supabase, profileData) {
-//   try {
-//     const { error } = await supabase
-//       .from("profiles")
-//       .update(profileData)
-//       .eq("id", profileData.id);
+async function updateUserProfile(supabase, profileData) {
+  try {
+    const { error } = await supabase
+      .from("profiles")
+      .update(profileData)
+      .eq("id", profileData.id);
 
-//     if (error) {
-//       throw error;
-//     }
+    if (error) {
+      throw error;
+    }
 
-//     toast.success("Profile updated!");
-//     return true;
-//   } catch (e) {
-//     toast.error("Failed to update profile");
-//     console.error("Failed to update profile", e);
-//   }
-// }
+    toast.success("Profile updated!");
+    return true;
+  } catch (e) {
+    toast.error("Failed to update profile");
+    console.error("Failed to update profile", e);
+  }
+}
 
 export default function AccountPage() {
   const router = useRouter();
@@ -43,8 +43,8 @@ export default function AccountPage() {
     fetchUserProfile(supabase, user).then((data) => setProfileData(data));
   }, [supabase, user, setProfileData, router]);
 
-  const makeOnChange = (field) => (e) =>
-    setProfileData({ ...profileData, [field]: e.target.value });
+  // const makeOnChange = (field) => (e) =>
+  //   setProfileData({ ...profileData, [field]: e.target.value });
 
   async function handleSubmit(e) {
     e.preventDefault();
