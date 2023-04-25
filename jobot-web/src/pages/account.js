@@ -35,6 +35,9 @@ export default function AccountPage() {
   const supabase = useSupabaseClient();
   const [profileData, setProfileData] = useState({});
 
+  console.log("Account page user");
+  console.log(user);
+
   useEffect(() => {
     fetchUserProfile(supabase, user).then((data) => setProfileData(data));
   }, [supabase, user, setProfileData, router]);
@@ -47,7 +50,8 @@ export default function AccountPage() {
 
     updateUserProfile(supabase, profileData);
   }
-
+console.log("profile Data");
+ console.log(profileData);
   if (!profileData) {
     return null;
   }

@@ -2,32 +2,38 @@ export const TEMPLATES_BASE_URL =
   "https://raw.githubusercontent.com/JovianHQ/jobot/main/templates";
 
 export async function getTemplates() {
+  console.log("get templates");
   const res = await fetch(
     `${TEMPLATES_BASE_URL}/index.json?t=${new Date().getTime()}`,
     {
       cache: "no-store",
     }
   );
+  console.log(res);
   return await res.json();
 }
 
 export async function getSystemPrompt(slug) {
+  console.log("get system prompt");
   const res = await fetch(
     `${TEMPLATES_BASE_URL}/${slug}/system.md?t=${new Date().getTime()}`,
     {
       cache: "no-store",
     }
   );
+  console.log(res);  
   return res.text();
 }
 
 export async function getUserPrompt(slug) {
+  console.log("get user prompt");  
   const res = await fetch(
     `${TEMPLATES_BASE_URL}/${slug}/user.md?t=${new Date().getTime()}`,
     {
       cache: "no-store",
     }
   );
+  console.log(res);
   return res.text();
 }
 
@@ -52,6 +58,7 @@ export async function getTemplate(slug) {
 
 export async function fetchUserProfile(supabase, user) {
   try {
+    console.log("fetchUserProfile");
     const { data, error } = await supabase
       .from("profiles")
       .select("*")
@@ -61,7 +68,7 @@ export async function fetchUserProfile(supabase, user) {
     if (error) {
       throw error;
     }
-
+    console.log(data);
     if (data) {
       return data;
     }
