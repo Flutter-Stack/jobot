@@ -36,7 +36,12 @@ async function createUserProfile(supabase, profileData, userId) {
     console.log(profileData);
     const { error } = await supabase
       .from("profiles")
-      .insert(profileData);
+      .insert([{
+        id: userId,
+        username: "hghghhgh",
+        first_name: "firstName",
+        last_name: "lastName"
+      }],{ returning: "minimal" });
 
     if (error) {
       throw error;
