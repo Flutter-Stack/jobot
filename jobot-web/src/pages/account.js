@@ -54,9 +54,9 @@ export default function AccountPage() {
 
 //  console.log("profile Data");
 //  console.log(profileData);
-  if (!profileData) {
-    return null;
-  }
+  // if (!profileData) {
+  //   return null;
+  // }
 
   return (
     <>
@@ -76,28 +76,28 @@ export default function AccountPage() {
                 field="username"
                 label="Username"
                 required
-                value={profileData?.username}
+                // value={profileData?.username}
                 onChange={makeOnChange("username")}
               />
               <TextInput
                 field="first_name"
                 label="First Name"
                 required
-                value={profileData.first_name}
+                // value={profileData.first_name}
                 onChange={makeOnChange("first_name")}
               />
 
               <TextInput
                 field="last_name"
                 label="Last Name"
-                value={profileData?.last_name}
+                // value={profileData?.last_name}
                 onChange={makeOnChange("last_name")}
               />
 
               <TextArea
                 field="bio"
                 label="Bio"
-                value={profileData?.bio}
+                // value={profileData?.bio}
                 onChange={makeOnChange("bio")}
               />
               <div className="mt-4 flex justify-between">
