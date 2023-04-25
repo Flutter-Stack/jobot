@@ -9,11 +9,11 @@ async function getSkills(supabase) {
   try {
     const { data, error } = await supabase.from("skills").select(`
         *,
-        // profiles (
-        //   username,
-        //   first_name,
-        //   last_name
-        // )
+        user_id (
+          username,
+          first_name,
+          last_name
+        )
       `);
     if (error) {
       throw error;
@@ -46,7 +46,7 @@ const Skills = () => {
               className="group col-span-1 cursor-pointer divide-y divide-gray-200 rounded-lg border bg-white hover:shadow dark:border-gray-400 dark:bg-transparent"
               key={skill.slug}
             >
-              <Link href={`/${skill.profiles.username}/${skill.slug}`}>
+              <Link href={`/${skill.user_id.username}/${skill.slug}`}>
                 <div className="flex h-full w-full flex-col p-5">
                   <div>
                     {skill.iconUrl && (
@@ -63,7 +63,7 @@ const Skills = () => {
                     )}
                   </div>
                   <div className="mt-2 text-gray-500 font-medium text-sm">
-                    {makeDisplayName(skill.profiles)}
+                    {makeDisplayName(skill.user_id)}
                   </div>
                   <h3 className="mt-2 truncate text-lg font-medium text-gray-900 group-hover:text-blue-600 dark:text-white">
                     {skill.title}
