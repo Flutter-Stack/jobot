@@ -76,7 +76,7 @@ export default function AccountPage() {
                 field="username"
                 label="Username"
                 required
-                value={profileData.username}
+                value={profileData?.username}
                 onChange={makeOnChange("username")}
               />
               <TextInput
@@ -90,14 +90,14 @@ export default function AccountPage() {
               <TextInput
                 field="last_name"
                 label="Last Name"
-                value={profileData.last_name}
+                value={profileData?.last_name}
                 onChange={makeOnChange("last_name")}
               />
 
               <TextArea
                 field="bio"
                 label="Bio"
-                value={profileData.bio}
+                value={profileData?.bio}
                 onChange={makeOnChange("bio")}
               />
               <div className="mt-4 flex justify-between">
