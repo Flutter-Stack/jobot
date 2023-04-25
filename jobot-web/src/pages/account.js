@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
-import { toast } from "react-hot-toast";
 
 // async function updateUserProfile(supabase, profileData) {
 //   try {
@@ -36,12 +35,6 @@ export default function AccountPage() {
 
   // const makeOnChange = (field) => (e) =>
   //   setProfileData({ ...profileData, [field]: e.target.value });
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    updateUserProfile(supabase, profileData);
-  }
 
 // console.log("profile Data");
 //  console.log(profileData);
