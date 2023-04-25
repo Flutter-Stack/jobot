@@ -2,59 +2,61 @@ import Navbar from "@/components/Navbar";
 // import SlugInput from "@/components/inputs/SlugInput";
 // import TextArea from "@/components/inputs/TextArea";
 // import TextInput from "@/components/inputs/TextInput";
-import { fetchUserProfile } from "@/network";
+// import { fetchUserProfile } from "@/network";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
-async function updateUserProfile(supabase, profileData) {
-  try {
-    const { error } = await supabase
-      .from("profiles")
-      .update(profileData)
-      .eq("id", profileData.id);
+// async function updateUserProfile(supabase, profileData) {
+//   try {
+//     const { error } = await supabase
+//       .from("profiles")
+//       .update(profileData)
+//       .eq("id", profileData.id);
 
-    if (error) {
-      throw error;
-    }
+//     if (error) {
+//       throw error;
+//     }
 
-    toast.success("Profile updated!");
-    return true;
-  } catch (e) {
-    toast.error("Failed to update profile");
-    console.error("Failed to update profile", e);
-  }
-}
+//     toast.success("Profile updated!");
+//     return true;
+//   } catch (e) {
+//     toast.error("Failed to update profile");
+//     console.error("Failed to update profile", e);
+//   }
+// }
 
 export default function AccountPage() {
-  const router = useRouter();
+  // const router = useRouter();
   const user = useUser();
-  const supabase = useSupabaseClient();
-  const [profileData, setProfileData] = useState({});
+  // const supabase = useSupabaseClient();
+
+  // const [profileData, setProfileData] = useState({});
 
   console.log("Account page user");
   console.log(user);
 
-  useEffect(() => {
-    fetchUserProfile(supabase, user).then((data) => setProfileData(data));
-  }, [supabase, user, setProfileData, router]);
+  // useEffect(() => {
+  //   fetchUserProfile(supabase, user).then((data) => setProfileData(data));
+  // }, [supabase, user, setProfileData, router]);
 
   // const makeOnChange = (field) => (e) =>
   //   setProfileData({ ...profileData, [field]: e.target.value });
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  // async function handleSubmit(e) {
+  //   e.preventDefault();
 
-    updateUserProfile(supabase, profileData);
-  }
-console.log("profile Data");
- console.log(profileData);
-  if (!profileData) {
-    return null;
-  }
+  //   updateUserProfile(supabase, profileData);
+  // }
+
+// console.log("profile Data");
+//  console.log(profileData);
+  // if (!profileData) {
+  //   return null;
+  // }
 
   return (
     <>
@@ -103,7 +105,7 @@ console.log("profile Data");
                 <input
                   type="submit"
                   value="Save"
-                  onClick={handleSubmit}
+//                  onClick={handleSubmit}
                   className="rounded-md w-20  bg-blue-500 py-2 px-3 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-600 active:bg-blue-700 dark:ring-0"
                 />
                 <Link
