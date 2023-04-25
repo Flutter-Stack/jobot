@@ -52,11 +52,11 @@ export default function AccountPage() {
     updateUserProfile(supabase, profileData);
   }
 
- console.log("profile Data");
- console.log(profileData);
-  // if (!profileData) {
-  //   return null;
-  // }
+//  console.log("profile Data");
+//  console.log(profileData);
+  if (!profileData) {
+    return null;
+  }
 
   return (
     <>
