@@ -43,8 +43,8 @@ export default function AccountPage() {
     fetchUserProfile(supabase, user).then((data) => setProfileData(data));
   }, [supabase, user, setProfileData, router]);
 
-  // const makeOnChange = (field) => (e) =>
-  //   setProfileData({ ...profileData, [field]: e.target.value });
+  const makeOnChange = (field) => (e) =>
+    setProfileData({ ...profileData, [field]: e.target.value });
 
   async function handleSubmit(e) {
     e.preventDefault();
