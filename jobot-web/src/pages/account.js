@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
-import SlugInput from "@/components/inputs/SlugInput";
-import TextArea from "@/components/inputs/TextArea";
-import TextInput from "@/components/inputs/TextInput";
+// import SlugInput from "@/components/inputs/SlugInput";
+// import TextArea from "@/components/inputs/TextArea";
+// import TextInput from "@/components/inputs/TextInput";
 import { fetchUserProfile } from "@/network";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import Head from "next/head";
@@ -42,8 +42,8 @@ export default function AccountPage() {
     fetchUserProfile(supabase, user).then((data) => setProfileData(data));
   }, [supabase, user, setProfileData, router]);
 
-  const makeOnChange = (field) => (e) =>
-    setProfileData({ ...profileData, [field]: e.target.value });
+  // const makeOnChange = (field) => (e) =>
+  //   setProfileData({ ...profileData, [field]: e.target.value });
 
   async function handleSubmit(e) {
     e.preventDefault();
