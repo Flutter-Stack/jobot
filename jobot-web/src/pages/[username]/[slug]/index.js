@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
     .eq("slug", slug)
     .eq("user_id.username", username)
     .limit(1);
-    console.log(data);
+    console.log(skills);
   if (error || !skills || skills.length === 0) {
     console.error("Failed to fetch skill for slug: " + slug, error);
     return {
