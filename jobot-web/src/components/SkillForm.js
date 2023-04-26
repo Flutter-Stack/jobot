@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SkillInput from "./SkillInput";
+// import SkillInput from "./SkillInput";
 // import { useUser } from "@supabase/auth-helpers-react";
 // import Link from "next/link";
 
@@ -18,7 +18,7 @@ const SkillForm = ({ skill, sendMessages }) => {
 //  const user = useUser();
   const [inputData] = useState({});
 
-  const inputs = skill.inputs || [];
+//  const inputs = skill.inputs || [];
 
   function startConversation() {
     const filledMessages = [
@@ -42,16 +42,7 @@ const SkillForm = ({ skill, sendMessages }) => {
         {skill.description}
       </div>
       <div>
-        {inputs.map((inputInfo) => (
-          <SkillInput
-            key={inputInfo.field}
-            {...inputInfo}
-            // value={inputData[inputInfo.field]}
-            // onChange={(value) =>
-            //   setInputData({ ...inputData, [inputInfo.field]: value })
-            // }
-          />
-        ))}
+        
       </div>
 
       <div className="flex justify-between">
