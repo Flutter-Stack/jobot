@@ -21,7 +21,7 @@ const SkillForm = ({ skill, sendMessages }) => {
 
   const inputs = skill.inputs || [];
   console.log("inputs");
-console.log(inputs);
+  console.log(typeof inputs);
   function startConversation() {
     const filledMessages = [
       { role: "system", content: fillTemplate(skill.system_prompt, inputData) },
