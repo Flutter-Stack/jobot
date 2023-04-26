@@ -16,7 +16,7 @@ export function fillTemplate(string, data = {}) {
 
 const SkillForm = ({ skill, sendMessages }) => {
 //  const user = useUser();
-  const [inputData, setInputData] = useState({});
+  const [inputData] = useState({});
 
   const inputs = skill.inputs || [];
 
@@ -46,10 +46,10 @@ const SkillForm = ({ skill, sendMessages }) => {
           <SkillInput
             key={inputInfo.field}
             {...inputInfo}
-            value={inputData[inputInfo.field]}
-            onChange={(value) =>
-              setInputData({ ...inputData, [inputInfo.field]: value })
-            }
+            // value={inputData[inputInfo.field]}
+            // onChange={(value) =>
+            //   setInputData({ ...inputData, [inputInfo.field]: value })
+            // }
           />
         ))}
       </div>
