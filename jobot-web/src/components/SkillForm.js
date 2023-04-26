@@ -1,8 +1,8 @@
 // import { useState } from "react";
 // import SkillInput from "./SkillInput";
-import { makeDisplayName } from "@/utils";
+// import { makeDisplayName } from "@/utils";
 import { useUser } from "@supabase/auth-helpers-react";
-import Link from "next/link";
+// import Link from "next/link";
 
 export function fillTemplate(string, data = {}) {
   return Object.entries(data).reduce((res, [key, value]) => {
@@ -65,19 +65,6 @@ const SkillForm = ({ skill, sendMessages }) => {
           Start Conversation
         </button>
 
-        {skill.user_id !== user?.id ? (
-          <div className="text-gray-500 font-medium text-sm">
-            Author: {makeDisplayName(skill.profiles)}
-          </div>
-        ) : (
-          <Link
-            href={`/${skill.profiles.username}/${skill.slug}/edit`}
-            type="submit"
-            className="ml-3 rounded-md bg-white py-2 px-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 active:bg-gray-100"
-          >
-            Edit Skill
-          </Link>
-        )}
       </div>
     </div>
   );
