@@ -1,5 +1,5 @@
-// import { useState } from "react";
-// import SkillInput from "./SkillInput";
+import { useState } from "react";
+import SkillInput from "./SkillInput";
 import { makeDisplayName } from "@/utils";
 import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
@@ -16,21 +16,19 @@ export function fillTemplate(string, data = {}) {
 }
 
 const SkillForm = ({ skill, sendMessages }) => {
-  console.log(sendMessages);
   const user = useUser();
-  console.log(user);
-  // const [inputData] = useState({});
+  const [inputData, setInputData] = useState({});
 
-//  const inputs = skill.inputs || [];
+  const inputs = skill.inputs || [];
 
-  // function startConversation() {
-  //   const filledMessages = [
-  //     { role: "system", content: fillTemplate(skill.system_prompt, inputData) },
-  //     { role: "user", content: fillTemplate(skill.user_prompt, inputData) },
-  //   ];
+  function startConversation() {
+    const filledMessages = [
+      { role: "system", content: fillTemplate(skill.system_prompt, inputData) },
+      { role: "user", content: fillTemplate(skill.user_prompt, inputData) },
+    ];
 
-  //   sendMessages(filledMessages);
-  // }
+    sendMessages(filledMessages);
+  }
 
   if (!skill) {
     return <div>Not Found</div>;
@@ -45,7 +43,7 @@ const SkillForm = ({ skill, sendMessages }) => {
         {skill.description}
       </div>
       <div>
-        {/* {inputs.map((inputInfo) => (
+        {inputs.map((inputInfo) => (
           <SkillInput
             key={inputInfo.field}
             {...inputInfo}
@@ -54,14 +52,14 @@ const SkillForm = ({ skill, sendMessages }) => {
               setInputData({ ...inputData, [inputInfo.field]: value })
             }
           />
-        ))} */}
+        ))}
       </div>
 
       <div className="flex justify-between">
         <button
           type="button"
-//          onClick={startConversation}
-          className="rounded-md  bg-blue-500 py-2 px-3 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-600 active:bg-blue-700 dark:ring-0"
+          onClick={startConversation}
+          className="rounded-md  bg-blue-500 py-2 px-3 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-600 active:bg-blue-700"
         >
           Start Conversation
         </button>
