@@ -1,6 +1,5 @@
 import { useState } from "react";
 import SkillInput from "./SkillInput";
-import { makeDisplayName } from "@/utils";
 import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
 
@@ -66,7 +65,7 @@ const SkillForm = ({ skill, sendMessages }) => {
 
         {skill.user_id !== user?.id ? (
           <div className="text-gray-500 font-medium text-sm">
-            Author: {makeDisplayName(skill.user_id)}
+            Author: 
           </div>
         ) : (
           <Link
