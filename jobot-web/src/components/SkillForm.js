@@ -63,7 +63,7 @@ const SkillForm = ({ skill, sendMessages }) => {
           Start Conversation
         </button>
 
-        {skill.user_id !== user?.id ? (
+        {skill.user_id.id !== user?.id ? (
           <div className="text-gray-500 font-medium text-sm">
             Author: 
           </div>
