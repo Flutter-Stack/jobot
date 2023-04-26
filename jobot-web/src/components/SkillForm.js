@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SkillInput from "./SkillInput";
-import { useUser } from "@supabase/auth-helpers-react";
-import Link from "next/link";
+// import { useUser } from "@supabase/auth-helpers-react";
+// import Link from "next/link";
 
 export function fillTemplate(string, data = {}) {
   return Object.entries(data).reduce((res, [key, value]) => {
@@ -15,7 +15,7 @@ export function fillTemplate(string, data = {}) {
 }
 
 const SkillForm = ({ skill, sendMessages }) => {
-  const user = useUser();
+//  const user = useUser();
   const [inputData, setInputData] = useState({});
 
   const inputs = skill.inputs || [];
