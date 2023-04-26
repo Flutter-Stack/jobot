@@ -8,7 +8,13 @@ import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 export default function SkillPage({ skill }) {
   console.log("SkillPage");
+  console.log("skill parameter");
+  console.log(skill);
   const { history, sending, sendMessages } = useOpenAIMessages();
+  console.log("history");
+  console.log(history);
+  console.log("sending");
+  console.log(sending);
 
   if (!skill) {
     return null;
