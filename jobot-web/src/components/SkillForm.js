@@ -18,10 +18,8 @@ export function fillTemplate(string, data = {}) {
 const SkillForm = ({ skill, sendMessages }) => {
   const user = useUser();
   const [inputData, setInputData] = useState({});
-
-  console.log("inputs");
-  console.log(typeof inputs);
-
+console.log("skill");
+console.log(skill);
   const inputs = skill.inputs || [];
   console.log("inputs");
   console.log(inputs);
