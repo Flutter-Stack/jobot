@@ -20,7 +20,7 @@ const SkillForm = ({ skill, sendMessages }) => {
   const [inputData, setInputData] = useState({});
 console.log("skill");
 console.log(skill);
-  const inputs = skill.inputs || [];
+  const inputs = JSON.parse("[" + skill.inputs + "]") || [];
   console.log("inputs");
   console.log(inputs);
   console.log(typeof inputs);
