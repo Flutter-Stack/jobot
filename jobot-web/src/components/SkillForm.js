@@ -66,11 +66,11 @@ const SkillForm = ({ skill, sendMessages }) => {
 
         {skill.user_id !== user?.id ? (
           <div className="text-gray-500 font-medium text-sm">
-            Author: {makeDisplayName(skill.profiles)}
+            Author: {makeDisplayName(skill.user_id)}
           </div>
         ) : (
           <Link
-            href={`/${skill.profiles.username}/${skill.slug}/edit`}
+            href={`/${skill.user_id.username}/${skill.slug}/edit`}
             type="submit"
             className="ml-3 rounded-md bg-white py-2 px-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 active:bg-gray-100"
           >
