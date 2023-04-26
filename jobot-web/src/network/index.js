@@ -59,11 +59,15 @@ export async function getTemplate(slug) {
 export async function fetchUserProfile(supabase, user) {
   try {
     console.log("fetchUserProfile");
+    console.log("user id");
+    console.log(user.id);
     const { data, error } = await supabase
       .from("profiles")
       .select("*")
       .eq("id", user.id)
       .single();
+
+    console.log(data);
 
     if (error) {
       throw error;

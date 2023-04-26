@@ -16,6 +16,7 @@ export function fillTemplate(string, data = {}) {
 }
 
 const SkillForm = ({ skill, sendMessages }) => {
+  console.log("SkillForm");
   const user = useUser();
   const [inputData, setInputData] = useState({});
 

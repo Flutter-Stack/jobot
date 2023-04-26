@@ -7,6 +7,7 @@ import SkillForm from "@/components/SkillForm";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 export default function SkillPage({ skill }) {
+  console.log("SkillPage");
   const { history, sending, sendMessages } = useOpenAIMessages();
 
   if (!skill) {
@@ -17,7 +18,7 @@ export default function SkillPage({ skill }) {
     <>
       <Head>
         <title>{skill.title} - Jobot</title>
-        <meta name="description" content={skill.description} />
+        <meta name="description" content={skill?.description} />
         <link rel="icon" href="/jobot_icon.png" type="image/png" />
         <meta property="og:image" content="/jobot_meta.png" />
       </Head>
@@ -40,17 +41,18 @@ export default function SkillPage({ skill }) {
 }
 
 export async function getServerSideProps(context) {
+  console.log("getServerSideProps");
   const supabase = createServerSupabaseClient(context);
   const slug = context.params.slug;
   const username = context.params.username;
 
   const { data: skills, error } = await supabase
     .from("skills")
-    .select("*,profiles(username, first_name, last_name)")
+    .select("*,user_id(username, first_name, last_name)")
     .eq("slug", slug)
-    .eq("profiles.username", username)
+    .eq("user_id.username", username)
     .limit(1);
-
+    console.log(data);
   if (error || !skills || skills.length === 0) {
     console.error("Failed to fetch skill for slug: " + slug, error);
     return {

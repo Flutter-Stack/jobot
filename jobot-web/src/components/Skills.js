@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 
 async function getSkills(supabase) {
   try {
+    console.log("getSkills");
     const { data, error } = await supabase.from("skills").select(`
         *,
         user_id (
@@ -15,6 +16,7 @@ async function getSkills(supabase) {
           last_name
         )
       `);
+      console.log(data);
     if (error) {
       throw error;
     }
