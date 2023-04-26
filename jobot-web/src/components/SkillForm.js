@@ -17,18 +17,18 @@ export function fillTemplate(string, data = {}) {
 
 const SkillForm = ({ skill, sendMessages }) => {
   const user = useUser();
-  const [inputData] = useState({});
+  // const [inputData] = useState({});
 
 //  const inputs = skill.inputs || [];
 
-  function startConversation() {
-    const filledMessages = [
-      { role: "system", content: fillTemplate(skill.system_prompt, inputData) },
-      { role: "user", content: fillTemplate(skill.user_prompt, inputData) },
-    ];
+  // function startConversation() {
+  //   const filledMessages = [
+  //     { role: "system", content: fillTemplate(skill.system_prompt, inputData) },
+  //     { role: "user", content: fillTemplate(skill.user_prompt, inputData) },
+  //   ];
 
-    sendMessages(filledMessages);
-  }
+  //   sendMessages(filledMessages);
+  // }
 
   if (!skill) {
     return <div>Not Found</div>;
@@ -58,7 +58,7 @@ const SkillForm = ({ skill, sendMessages }) => {
       <div className="flex justify-between">
         <button
           type="button"
-          onClick={startConversation}
+//          onClick={startConversation}
           className="rounded-md  bg-blue-500 py-2 px-3 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-600 active:bg-blue-700 dark:ring-0"
         >
           Start Conversation
