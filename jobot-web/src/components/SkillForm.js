@@ -63,19 +63,7 @@ const SkillForm = ({ skill, sendMessages }) => {
           Start Conversation
         </button>
 
-        {skill.user_id.id !== user?.id ? (
-          <div className="text-gray-500 font-medium text-sm">
-            Author: 
-          </div>
-        ) : (
-          <Link
-            href={`/edit`}
-            type="submit"
-            className="ml-3 rounded-md bg-white py-2 px-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 active:bg-gray-100"
-          >
-            Edit Skill
-          </Link>
-        )}
+        
       </div>
     </div>
   );
