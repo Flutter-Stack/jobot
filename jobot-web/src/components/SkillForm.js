@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import SkillInput from "./SkillInput";
+import SkillInput from "./SkillInput";
 import { makeDisplayName } from "@/utils";
 import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
@@ -17,10 +17,11 @@ export function fillTemplate(string, data = {}) {
 
 const SkillForm = ({ skill, sendMessages }) => {
   const user = useUser();
-  const [inputData] = useState({});
+  const [inputData, setInputData] = useState({});
 
-  // const inputs = skill.inputs || [];
-
+  const inputs = skill.inputs || [];
+  console.log("inputs");
+console.log(inputs);
   function startConversation() {
     const filledMessages = [
       { role: "system", content: fillTemplate(skill.system_prompt, inputData) },
@@ -43,7 +44,7 @@ const SkillForm = ({ skill, sendMessages }) => {
         {skill.description}
       </div>
       <div>
-        {/* {inputs.map((inputInfo) => (
+        {inputs?.map((inputInfo) => (
           <SkillInput
             key={inputInfo.field}
             {...inputInfo}
@@ -52,7 +53,7 @@ const SkillForm = ({ skill, sendMessages }) => {
               setInputData({ ...inputData, [inputInfo.field]: value })
             }
           />
-        ))} */}
+        ))}
       </div>
 
       <div className="flex justify-between">
