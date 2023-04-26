@@ -19,9 +19,14 @@ const SkillForm = ({ skill, sendMessages }) => {
   const user = useUser();
   const [inputData, setInputData] = useState({});
 
-  const inputs = skill.inputs || [];
   console.log("inputs");
   console.log(typeof inputs);
+
+  const inputs = skill.inputs || [];
+  console.log("inputs");
+  console.log(inputs);
+  console.log(typeof inputs);
+
   function startConversation() {
     const filledMessages = [
       { role: "system", content: fillTemplate(skill.system_prompt, inputData) },
