@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 // import SkillInput from "./SkillInput";
 import { makeDisplayName } from "@/utils";
 import { useUser } from "@supabase/auth-helpers-react";
@@ -16,6 +16,7 @@ export function fillTemplate(string, data = {}) {
 }
 
 const SkillForm = ({ skill, sendMessages }) => {
+  console.log(sendMessages);
   const user = useUser();
   // const [inputData] = useState({});
 
