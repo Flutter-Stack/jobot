@@ -22,7 +22,7 @@ const SkillForm = ({ skill, sendMessages }) => {
   console.log("sendMessages");
   console.log(sendMessages);
 
-  const user = useUser();
+  // const user = useUser();
   // const [inputData, setInputData] = useState({});
 
   const inputs = skill.inputs || [];
