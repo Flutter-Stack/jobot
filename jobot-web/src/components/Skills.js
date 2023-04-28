@@ -11,6 +11,7 @@ async function getSkills(supabase) {
     const { data, error } = await supabase.from("skills").select(`
         *,
         user_id (
+          id,
           username,
           first_name,
           last_name

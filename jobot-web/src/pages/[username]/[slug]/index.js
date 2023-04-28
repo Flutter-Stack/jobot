@@ -54,7 +54,7 @@ export async function getServerSideProps(context) {
 
   const { data: skills, error } = await supabase
     .from("skills")
-    .select("*,user_id(username, first_name, last_name)")
+    .select("*,user_id(id, username, first_name, last_name)")
     .eq("slug", slug)
     .eq("user_id.username", username)
     .limit(1);
