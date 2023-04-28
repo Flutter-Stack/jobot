@@ -37,6 +37,7 @@ console.log(skill);
   if (!skill) {
     return <div>Not Found</div>;
   }
+  
 
   return (
     <div className="mx-auto my-4 w-full max-w-4xl px-2">
@@ -67,9 +68,7 @@ console.log(skill);
         >
           Start Conversation
         </button>
-console.log(skill.user_id);
-console.log(user.id);
-        {skill.user_id !== user?.id ? (
+        {skill.user_id.id !== user?.id ? (
           <div className="text-gray-500 font-medium text-sm">
             Author: {makeDisplayName(skill.user_id)}
           </div>
