@@ -18,12 +18,8 @@ export function fillTemplate(string, data = {}) {
 const SkillForm = ({ skill, sendMessages }) => {
   const user = useUser();
   const [inputData, setInputData] = useState({});
-console.log("skill");
-console.log(skill);
-  const inputs = JSON.parse("[" + skill.inputs + "]") || [];
-  console.log("inputs");
-  console.log(inputs);
-  console.log(typeof inputs);
+
+  const inputs = skill.inputs || [];
 
   function startConversation() {
     const filledMessages = [
@@ -37,7 +33,6 @@ console.log(skill);
   if (!skill) {
     return <div>Not Found</div>;
   }
-  
 
   return (
     <div className="mx-auto my-4 w-full max-w-4xl px-2">
@@ -48,7 +43,7 @@ console.log(skill);
         {skill.description}
       </div>
       <div>
-        {inputs?.map((inputInfo) => (
+        {inputs.map((inputInfo) => (
           <SkillInput
             key={inputInfo.field}
             {...inputInfo}
@@ -68,13 +63,14 @@ console.log(skill);
         >
           Start Conversation
         </button>
-        {skill.user_id.id !== user?.id ? (
+
+        {skill.user_id !== user?.id ? (
           <div className="text-gray-500 font-medium text-sm">
-            Author: {makeDisplayName(skill.user_id)}
+            Author: {makeDisplayName(skill.profiles)}
           </div>
         ) : (
           <Link
-            href={`/${skill.user_id.username}/${skill.slug}/edit`}
+            href={`/${skill.profiles.username}/${skill.slug}/edit`}
             type="submit"
             className="ml-3 rounded-md bg-white py-2 px-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 active:bg-gray-100"
           >

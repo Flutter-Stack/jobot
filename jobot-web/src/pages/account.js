@@ -10,38 +10,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-async function createUserProfile(supabase, profileData, userId) {
-  try {
-    profileData.id = userId;
-    console.log("profile data before create");
-    console.log(profileData);
-    const { error } = await supabase
-      .from("profiles")
-      .insert(
-        profileData
-      ,{ returning: "minimal" });
-
-    if (error) {
-      throw error;
-    }
-
-    toast.success("Profile created!");
-    return true;
-  } catch (e) {
-    toast.error("Failed to create profile");
-    console.error("Failed to create profile", e);
-  }
-}
-
 export default function AccountPage() {
   const router = useRouter();
   const user = useUser();
   const supabase = useSupabaseClient();
-
   const [profileData, setProfileData] = useState({});
-
-  console.log("Account page user");
-  console.log(user);
 
   useEffect(() => {
     fetchUserProfile(supabase, user).then((data) => setProfileData(data));
@@ -52,14 +25,13 @@ export default function AccountPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    profileData.id === undefined ? createUserProfile(supabase, profileData, user.id) : updateUserProfile(supabase, profileData);
+
+    updateUserProfile(supabase, profileData);
   }
 
-//  console.log("profile Data");
-//  console.log(profileData);
-  // if (!profileData) {
-  //   return null;
-  // }
+  if (!profileData) {
+    return null;
+  }
 
   return (
     <>
@@ -79,30 +51,31 @@ export default function AccountPage() {
                 field="username"
                 label="Username"
                 required
-                value={profileData?.username}
+                value={profileData.username}
                 onChange={makeOnChange("username")}
               />
               <TextInput
                 field="first_name"
                 label="First Name"
                 required
-                value={profileData?.first_name}
+                value={profileData.first_name}
                 onChange={makeOnChange("first_name")}
               />
 
               <TextInput
                 field="last_name"
                 label="Last Name"
-                value={profileData?.last_name}
+                value={profileData.last_name}
                 onChange={makeOnChange("last_name")}
               />
 
               <TextArea
                 field="bio"
                 label="Bio"
-                value={profileData?.bio}
+                value={profileData.bio}
                 onChange={makeOnChange("bio")}
               />
+
               <div className="mt-4 flex justify-between">
                 <input
                   type="submit"

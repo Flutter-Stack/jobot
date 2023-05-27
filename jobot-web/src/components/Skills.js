@@ -7,17 +7,14 @@ import { toast } from "react-hot-toast";
 
 async function getSkills(supabase) {
   try {
-    console.log("getSkills");
     const { data, error } = await supabase.from("skills").select(`
         *,
-        user_id (
-          id,
+        profiles (
           username,
           first_name,
           last_name
         )
       `);
-      console.log(data);
     if (error) {
       throw error;
     }
@@ -49,7 +46,7 @@ const Skills = () => {
               className="group col-span-1 cursor-pointer divide-y divide-gray-200 rounded-lg border bg-white hover:shadow"
               key={skill.slug}
             >
-              <Link href={`/${skill.user_id.username}/${skill.slug}`}>
+              <Link href={`/${skill.profiles.username}/${skill.slug}`}>
                 <div className="flex h-full w-full flex-col p-5">
                   <div>
                     {skill.iconUrl && (
@@ -66,7 +63,7 @@ const Skills = () => {
                     )}
                   </div>
                   <div className="mt-2 text-gray-500 font-medium text-sm">
-                    {makeDisplayName(skill.user_id)}
+                    {makeDisplayName(skill.profiles)}
                   </div>
                   <h3 className="mt-2 truncate text-lg font-medium text-gray-900 group-hover:text-blue-600">
                     {skill.title}

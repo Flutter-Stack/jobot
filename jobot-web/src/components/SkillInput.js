@@ -9,14 +9,6 @@ const SkillInput = ({
   onChange,
   options = [],
 }) => {
-  console.log("SkillInput");
-  console.log(field);
-  console.log(title);
-  console.log(placeholder);
-  console.log(type);
-  console.log(value);
-  console.log(onChange);
-  console.log(options);
   switch (type) {
     case "textarea":
     case "code":
