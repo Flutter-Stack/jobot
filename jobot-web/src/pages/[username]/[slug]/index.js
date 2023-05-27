@@ -12,6 +12,15 @@ import { useRouter } from "next/router";
 
 export default function SkillPage({ skill }) {
   const { history, sending, sendMessages } = useOpenAIMessages();
+  console.log("history");
+  console.log(history);
+
+  console.log("sending");
+  console.log(sending);
+
+  console.log("sendMessages");
+  console.log(sendMessages);
+
   const supabase = useSupabaseClient();
   const user = useUser();
   console.log("user");
@@ -20,12 +29,16 @@ export default function SkillPage({ skill }) {
   console.log("router");
   console.log(router);  
 
+  console.log("skill");
+  console.log(skill);  
 
   if (!skill) {
     return null;
   }
 
   async function handleSend(newMessages) {
+    console.log("newMessages");
+    console.log(newMessages);
     const finalHistory = await sendMessages(newMessages);
     console.log("final history");
     console.log(finalHistory);
