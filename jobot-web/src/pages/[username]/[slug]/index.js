@@ -14,7 +14,12 @@ export default function SkillPage({ skill }) {
   const { history, sending, sendMessages } = useOpenAIMessages();
   const supabase = useSupabaseClient();
   const user = useUser();
+  console.log("user");
+  console.log(user);
   const router = useRouter();
+  console.log("router");
+  console.log(router);  
+
 
   if (!skill) {
     return null;
@@ -22,7 +27,8 @@ export default function SkillPage({ skill }) {
 
   async function handleSend(newMessages) {
     const finalHistory = await sendMessages(newMessages);
-
+    console.log("final history");
+    console.log(finalHistory);
     if (!finalHistory) {
       return false;
     }
@@ -37,7 +43,10 @@ export default function SkillPage({ skill }) {
       })
       .select()
       .single();
-
+      console.log("conversation data");
+      console.log(conversationData);
+      console.log("conversationError");
+      console.log(conversationError);      
     if (conversationError) {
       toast.error(
         "Failed to create conversation. " + conversationError.message
@@ -52,11 +61,17 @@ export default function SkillPage({ skill }) {
       conversation_id: conversationData.id,
     }));
 
+    console.log("unsavedMessages");
+    console.log(unsavedMessages);      
+
     // insert messages using supabase
     const { error: messagesError } = await supabase
       .from("messages")
       .insert(unsavedMessages);
 
+      console.log("messagesError");
+      console.log(messagesError);      
+  
     if (messagesError) {
       toast.error("Failed to save messages. " + messagesError.message);
       console.error("Failed to save messages", messagesError);
@@ -96,14 +111,18 @@ export async function getServerSideProps(context) {
   const supabase = createServerSupabaseClient(context);
   const slug = context.params.slug;
   const username = context.params.username;
-
+  console.log("slug");
+  console.log(slug);
   const { data: skills, error } = await supabase
     .from("skills")
     .select("*,profiles(username, first_name, last_name)")
     .eq("slug", slug)
     .eq("profiles.username", username)
     .limit(1);
-
+    console.log("skills");
+    console.log(skills);
+    console.log("error");
+    console.log(error);    
   if (error || !skills || skills.length === 0) {
     console.error("Failed to fetch skill for slug: " + slug, error);
     return {
