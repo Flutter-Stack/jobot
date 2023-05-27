@@ -2,6 +2,7 @@ import { useUser } from "@supabase/auth-helpers-react";
 import { createParser } from "eventsource-parser";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useLoginDialog } from ".";
 
 export const OpenAIStream = async (body) => {
   const encoder = new TextEncoder();
@@ -82,16 +83,18 @@ export async function postOpenAIMessages(messages) {
 const SYSTEM_MESSAGE =
   "You are Jobot, a helpful and verstaile AI created by Jovian using state-of the art ML models and APIs.";
 
-export default function useOpenAIMessages() {
-  const [history, setHistory] = useState([
-    { role: "system", content: SYSTEM_MESSAGE },
-  ]);
+const DEFAULT_HISTORY = [{ role: "system", content: SYSTEM_MESSAGE }];
+
+export default function useOpenAIMessages(initialHistory = DEFAULT_HISTORY) {
+  const { setLoginOpen } = useLoginDialog();
+  const [history, setHistory] = useState(initialHistory);
   const [sending, setSending] = useState(false);
   const user = useUser();
 
   const sendMessages = async (newMessages) => {
     if (!user) {
-      toast.error("You must be logged in to send a message");
+      toast("Please log in to send a message");
+      setLoginOpen(true);
       return;
     }
 
@@ -108,13 +111,15 @@ export default function useOpenAIMessages() {
       toast.error("Failed to send:" + response.statusText);
     }
 
+    let finalHistory;
     await streamOpenAIResponse(response, (content) => {
-      setHistory([...newHistory, { role: "assistant", content }]);
+      finalHistory = [...newHistory, { role: "assistant", content }];
+      setHistory(finalHistory);
     });
 
     setSending(false);
 
-    return true;
+    return finalHistory;
   };
 
   return { history, setHistory, sending, sendMessages };

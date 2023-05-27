@@ -46,7 +46,7 @@ const Skills = () => {
         >
           {skills.map((skill) => (
             <li
-              className="group col-span-1 cursor-pointer divide-y divide-gray-200 rounded-lg border bg-white hover:shadow dark:border-gray-400 dark:bg-transparent"
+              className="group col-span-1 cursor-pointer divide-y divide-gray-200 rounded-lg border bg-white hover:shadow"
               key={skill.slug}
             >
               <Link href={`/${skill.user_id.username}/${skill.slug}`}>
@@ -68,7 +68,7 @@ const Skills = () => {
                   <div className="mt-2 text-gray-500 font-medium text-sm">
                     {makeDisplayName(skill.user_id)}
                   </div>
-                  <h3 className="mt-2 truncate text-lg font-medium text-gray-900 group-hover:text-blue-600 dark:text-white">
+                  <h3 className="mt-2 truncate text-lg font-medium text-gray-900 group-hover:text-blue-600">
                     {skill.title}
                   </h3>
 
