@@ -19,7 +19,7 @@ const SkillForm = ({ skill, sendMessages }) => {
   const user = useUser();
   const [inputData, setInputData] = useState({});
 
-  const inputs = skill.inputs || [];
+  const inputs = JSON.parse(skill.inputs) || [];
 
   function startConversation() {
     const filledMessages = [
@@ -43,7 +43,7 @@ const SkillForm = ({ skill, sendMessages }) => {
         {skill.description}
       </div>
       <div>
-        {inputs.map((inputInfo) => (
+        {inputs?.map((inputInfo) => (
           <SkillInput
             key={inputInfo.field}
             {...inputInfo}
