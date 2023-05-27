@@ -36,63 +36,63 @@ export default function SkillPage({ skill }) {
     return null;
   }
 
-  async function handleSend(newMessages) {
-    console.log("newMessages");
-    console.log(newMessages);
-    const finalHistory = await sendMessages(newMessages);
-    console.log("final history");
-    console.log(finalHistory);
-    if (!finalHistory) {
-      return false;
-    }
+  // async function handleSend(newMessages) {
+  //   console.log("newMessages");
+  //   console.log(newMessages);
+  //   const finalHistory = await sendMessages(newMessages);
+  //   console.log("final history");
+  //   console.log(finalHistory);
+  //   if (!finalHistory) {
+  //     return false;
+  //   }
 
-    const { data: conversationData, error: conversationError } = await supabase
-      .from("conversations")
-      .insert({
-        user_id: user.id,
-        title: finalHistory
-          .filter((m) => m.role !== "system")[0]
-          .content.slice(0, 40),
-      })
-      .select()
-      .single();
-      console.log("conversation data");
-      console.log(conversationData);
-      console.log("conversationError");
-      console.log(conversationError);      
-    if (conversationError) {
-      toast.error(
-        "Failed to create conversation. " + conversationError.message
-      );
-      console.error("Failed to create conversation", conversationError);
-      return false;
-    }
+  //   const { data: conversationData, error: conversationError } = await supabase
+  //     .from("conversations")
+  //     .insert({
+  //       user_id: user.id,
+  //       title: finalHistory
+  //         .filter((m) => m.role !== "system")[0]
+  //         .content.slice(0, 40),
+  //     })
+  //     .select()
+  //     .single();
+  //     console.log("conversation data");
+  //     console.log(conversationData);
+  //     console.log("conversationError");
+  //     console.log(conversationError);      
+  //   if (conversationError) {
+  //     toast.error(
+  //       "Failed to create conversation. " + conversationError.message
+  //     );
+  //     console.error("Failed to create conversation", conversationError);
+  //     return false;
+  //   }
 
-    // add conversation id into all messages
-    const unsavedMessages = finalHistory.map((message) => ({
-      ...message,
-      conversation_id: conversationData.id,
-    }));
+  //   // add conversation id into all messages
+  //   const unsavedMessages = finalHistory.map((message) => ({
+  //     ...message,
+  //     conversation_id: conversationData.id,
+  //   }));
 
-    console.log("unsavedMessages");
-    console.log(unsavedMessages);      
+  //   console.log("unsavedMessages");
+  //   console.log(unsavedMessages);      
 
-    // insert messages using supabase
-    const { error: messagesError } = await supabase
-      .from("messages")
-      .insert(unsavedMessages);
+  //   // insert messages using supabase
+  //   const { error: messagesError } = await supabase
+  //     .from("messages")
+  //     .insert(unsavedMessages);
 
-      console.log("messagesError");
-      console.log(messagesError);      
+  //     console.log("messagesError");
+  //     console.log(messagesError);      
   
-    if (messagesError) {
-      toast.error("Failed to save messages. " + messagesError.message);
-      console.error("Failed to save messages", messagesError);
-      return false;
-    }
+  //   if (messagesError) {
+  //     toast.error("Failed to save messages. " + messagesError.message);
+  //     console.error("Failed to save messages", messagesError);
+  //     return false;
+  //   }
 
-    router.push(`/conversations/${conversationData.id}`);
-  }
+  //   router.push(`/conversations/${conversationData.id}`);
+  // }
 
   return (
     <>
@@ -105,7 +105,7 @@ export default function SkillPage({ skill }) {
       <Layout>
         <Navbar />
 
-        {history.length === 1 && (
+        {/* {history.length === 1 && (
           <SkillForm skill={skill} sendMessages={handleSend} />
         )}
 
@@ -114,7 +114,7 @@ export default function SkillPage({ skill }) {
             <MessageHistory history={history} />
             <MessageInput sending={sending} sendMessages={handleSend} />
           </>
-        )}
+        )} */}
       </Layout>
     </>
   );
