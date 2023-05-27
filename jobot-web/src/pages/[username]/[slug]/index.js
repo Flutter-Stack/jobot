@@ -2,6 +2,7 @@ import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import useOpenAIMessages from "@/utils/openai";
 import MessageHistory from "@/components/MessageHistory";
+import MessageInput from "@/components/MessageInput";
 import SkillForm from "@/components/SkillForm";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import Layout from "@/components/Layout";
@@ -10,7 +11,7 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/router";
 
 export default function SkillPage({ skill }) {
-  const { history, sendMessages } = useOpenAIMessages();
+  const { history, sending, sendMessages } = useOpenAIMessages();
   const supabase = useSupabaseClient();
   const user = useUser();
   const router = useRouter();
@@ -83,6 +84,7 @@ export default function SkillPage({ skill }) {
         {history.length > 1 && (
           <>
             <MessageHistory history={history} />
+            <MessageInput sending={sending} sendMessages={handleSend} />
           </>
         )}
       </Layout>
