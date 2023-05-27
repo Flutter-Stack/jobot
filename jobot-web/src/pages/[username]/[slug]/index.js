@@ -84,7 +84,6 @@ export default function SkillPage({ skill }) {
         {history.length > 1 && (
           <>
             <MessageHistory history={history} />
-            <MessageInput sending={sending} sendMessages={handleSend} />
           </>
         )}
       </Layout>
