@@ -10,7 +10,7 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/router";
 
 export default function SkillPage({ skill }) {
-  const { history, sending, sendMessages } = useOpenAIMessages();
+  const { history, sendMessages } = useOpenAIMessages();
   const supabase = useSupabaseClient();
   const user = useUser();
   const router = useRouter();
