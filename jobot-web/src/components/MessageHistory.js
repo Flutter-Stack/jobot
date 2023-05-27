@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// import Message from "./Message";
+import Message from "./Message";
 
 const MessageHistory = ({ history }) => {
   let messagesWindow = useRef();
@@ -16,7 +16,11 @@ const MessageHistory = ({ history }) => {
       className="flex-1 overflow-y-auto py-2 px-2"
       ref={(el) => (messagesWindow.current = el)}
     >
-
+      {history
+        // .filter((message) => message.role !== "system")
+        .map((message, index) => (
+          <Message key={index} {...message} />
+        ))}
     </div>
   );
 };
