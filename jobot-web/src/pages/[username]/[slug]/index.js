@@ -21,7 +21,8 @@ export default function SkillPage({ skill }) {
   console.log("sendMessages");
   console.log(sendMessages);
 
-  const supabase = useSupabaseClient();
+  // const supabase = useSupabaseClient();
+
   const user = useUser();
   console.log("user");
   console.log(user);
